@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+if [[ $# -ne 1 || ! -d "day$1" ]]
+then
+	echo "usage: run-day n" >&2
+	exit 1
+elif [[ ! -x "day$1/run.sh" ]]
+then
+	echo "no executable 'day$1/run.sh' found" >&2
+	exit  1
+elif [[ ! -r "inputs/$1.txt" ]]
+then
+	echo "provide input in 'inputs/$1.txt'" >&2
+	exit  1
+fi
+cd "day$1" || exit
+./run.sh < "../inputs/$1.txt"

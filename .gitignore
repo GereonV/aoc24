@@ -1,2 +1,5 @@
 /inputs/*.txt
 !/inputs/.gitkeep
+/day*/Main
+/day*/Main.hi
+/day*/Main.o
