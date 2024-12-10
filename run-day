@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+(($1 < 10)) && set -- "0$1"
 if [[ $# -ne 1 || ! -d "day$1" ]]
 then
 	echo "usage: run-day n" >&2

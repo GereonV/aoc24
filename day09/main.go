@@ -31,9 +31,7 @@ func part1(s string) int {
 	}
 	l, r := 0, len(blocks)-1
 	for {
-		for blocks[l] != -1 {
-			l++
-		}
+		l += slices.Index(blocks[l:], -1)
 		for blocks[r] == -1 {
 			r--
 		}
@@ -62,8 +60,8 @@ func part2(s string) int {
 		pos int
 		len int
 	}
-	files := []File{}
-	gaps := []Gap{}
+	files := make([]File, 0, (len(s)+1)/2)
+	gaps := make([]Gap, 0, len(s)/2)
 	pos := 0
 	for i, ch := range s {
 		sz := int(ch - '0')
@@ -74,8 +72,7 @@ func part2(s string) int {
 		}
 		pos += sz
 	}
-	slices.Reverse(files)
-	for i, f := range files {
+	for i, f := range slices.Backward(files) {
 		var g *Gap
 		for i, gi := range gaps {
 			if gi.len >= f.len {
