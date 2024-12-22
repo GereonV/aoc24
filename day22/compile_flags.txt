@@ -1,0 +1,3 @@
+-std=c++23
+-fconstexpr-steps=999999999
+-O3
